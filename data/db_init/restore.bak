@@ -1,0 +1,1 @@
+pg_restore -U postgres -d lottery /docker-entrypoint-initdb.d/lastest.dump

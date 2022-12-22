@@ -1,0 +1,1 @@
+psql -U postgres -d racing -f  /docker-entrypoint-initdb.d/create_tables.ddl

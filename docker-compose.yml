@@ -1,0 +1,24 @@
+# docker-compose up
+version: '3.7'
+services:
+  db_pg_racing:
+    image: postgres:14.5
+    container_name: db_pg_racing
+    ports:
+      - "5420:5432"
+    volumes:
+      - "./data/postgresql:/var/lib/postgresql/data/pgdata"
+      - "./data/db_init:/docker-entrypoint-initdb.d"
+      #- F:/repositories/workspaces/prediction_num/data/postgres:/var/lib/postgresql/data
+      # do additional initialization scripts
+      #- "../configs/database:/docker-entrypoint-initdb.d"
+      #- F:/repositories/workspaces/prediction_num/configs/database:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: racing
+      PGDATA: /var/lib/postgresql/data/pgdata
+      TZ: Asia/Tokyo
+      PGTZ: Asia/Tokyo
+      # PGDATA: /temp
+    restart: 'no'
